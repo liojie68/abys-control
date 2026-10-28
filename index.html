@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b0b0e">
+  <title>ABYS CONTROL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2.5 20 6v5.4c0 5-3.4 8.4-8 10.1-4.6-1.7-8-5.1-8-10.1V6l8-3.5Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>
+      </div>
+      <div><h1>ABYS CONTROL</h1><p>DEVICE DASHBOARD</p></div>
+      <span class="status"><i></i> LOCAL</span>
+    </header>
+
+    <section class="welcome">
+      <p class="eyebrow">CONTROL CENTER</p>
+      <h2>Panel perangkat<span>.</span></h2>
+      <p class="muted">Demo lokal. Tidak ada koneksi tersembunyi atau kontrol jarak jauh.</p>
+    </section>
+
+    <section class="grid">
+      <article class="tile">
+        <div class="tile-icon"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg></div>
+        <h3>Lock HP</h3><p class="muted">Kunci demo di dalam panel ini.</p>
+        <button id="lockDevice">Aktifkan Lock</button>
+      </article>
+      <article class="tile">
+        <div class="tile-icon"><svg viewBox="0 0 24 24"><path d="M12 3 20 6.5v5c0 4.8-3.2 8-8 9.5-4.8-1.5-8-4.7-8-9.5v-5L12 3Z"/><rect x="9" y="10" width="6" height="5" rx="1"/><path d="M10 10V8.5a2 2 0 0 1 4 0V10"/></svg></div>
+        <h3>Lock App</h3><p class="muted">Atur PIN untuk panel demo.</p>
+        <button class="secondary" id="setPin">Atur PIN</button>
+      </article>
+      <article class="tile wide">
+        <div class="tile-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="3"/><circle cx="12" cy="12.5" r="3.5"/><path d="m7 6 1.5-2h7L17 6"/></svg></div>
+        <h3>Camera Viewer</h3><p class="muted">Kamera hanya aktif setelah kamu menekan tombol dan memberi izin browser.</p>
+        <div class="camera-wrap"><video id="camera" autoplay playsinline muted></video><div id="cameraPlaceholder">Pratinjau kamera belum aktif</div></div>
+        <div class="actions"><button id="startCamera">Mulai Kamera</button><button id="stopCamera" class="secondary">Matikan Kamera</button></div>
+      </article>
+    </section>
+
+    <footer><span>ABYS CONTROL · MVP 0.1</span><span>SVG UI · LOCAL DEMO</span></footer>
+  </main>
+
+  <dialog id="pinDialog">
+    <form method="dialog" id="pinForm">
+      <p class="eyebrow">AUTHENTICATION</p><h2 id="pinTitle">Buat PIN</h2>
+      <p class="muted" id="pinDescription">Gunakan PIN 4–8 digit untuk demo ini.</p>
+      <input id="pinInput" inputmode="numeric" pattern="[0-9]{4,8}" minlength="4" maxlength="8" placeholder="Masukkan PIN" required>
+      <p id="pinError" class="error" aria-live="polite"></p>
+      <div class="actions"><button value="cancel" class="secondary">Batal</button><button id="pinSubmit" value="default">Lanjut</button></div>
+    </form>
+  </dialog>
+  <dialog id="lockedDialog">
+    <form method="dialog" id="unlockForm">
+      <p class="eyebrow">PANEL TERKUNCI</p><h2>Masukkan PIN</h2>
+      <input id="unlockInput" inputmode="numeric" pattern="[0-9]{4,8}" minlength="4" maxlength="8" placeholder="PIN" required>
+      <p id="unlockError" class="error" aria-live="polite"></p>
+      <button id="unlockSubmit" value="default">Buka Kunci</button>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
